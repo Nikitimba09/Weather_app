@@ -6,6 +6,7 @@ from timezonefinder import TimezoneFinder
 from datetime import datetime
 import requests
 import pytz
+from translate import Translator
 
 root = Tk()
 root.title("Weather App")
@@ -41,9 +42,14 @@ def getWeather():
         t.config(text=(temp, "°"))
         c.config(text=(condition, "|", "ОЩУЩАЕТСЯ", "КАК", temp, "°"))
 
+        # Translate eng to ru
+        translator = Translator(from_lang='en', to_lang='ru')
+        text = str(description)
+        result = translator.translate(text).split()[0]
+
         w.config(text=wind)
         h.config(text=humidity)
-        d.config(text=description)
+        d.config(text=result)
         p.config(text=pressure)
 
     except Exception as ex:
