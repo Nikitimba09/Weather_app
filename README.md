@@ -1,4 +1,4 @@
-# Weather_app
+# Weather_app Tkinter
 
 ## Старт
     python -m venv venv
